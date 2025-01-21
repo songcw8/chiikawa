@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta property="og:title" content="먼작귀"> 
+    <meta property="og:description" content="를 알아보자"> 
+    <meta property="og:image" content="https://i.namu.wiki/i/F1UUUCwAi-cD-7BNdeo2nT8VyjcHJGDPVgWJJjzJxIJ9vcsokfLj5wl5jCPnZY9KiCX7NMNe7sHifiOvplzpbEJn2k0n1i-X3X-__RrGd0KdbIOQxSwqh37bxcpwimUGFxWv6HHuus3TjBRdSryUfg.webp">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://i.namu.wiki/i/fdjSTH1Tl97OBiyb8_hgLqxgo79j9bicdUZF_-lsoOqkh6kP6-F0xtTJSWr4uW8R2ZacZiBwE2qk5hnsiSntA2xmfmegInf5Tis_lgbf-wbplmZis00Nx0Hcm1JFTKpfa2wWnBmEposvSwYadp212w.webp"
+    />
+
+    <title>치이카와 소개</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* 팝업 화면(배경) 스타일 */
+      .popup-overlay {
+        display: none; /* 기본적으로 숨겨짐 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* 팝업을 가장 위에 표시하도록 설정 */
+      }
+
+      /* 팝업 콘텐츠 스타일 */
+      .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 80%;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .popup h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .popup p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* 팝업 닫기 버튼 스타일 */
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.5em;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .popup-close:hover {
+        color: #ff0000;
+      }
+
+      /* 체크박스를 이용한 팝업 열기 */
+      .popup-toggle {
+        display: none;
+      }
+
+      /* 체크박스가 체크된 상태에서 팝업을 보이도록 설정 */
+      .popup-toggle:checked + .popup-overlay {
+        display: flex;
+      }
+
+      /* 팝업 애니메이션: 팝업이 부드럽게 나타나도록 설정 */
+      .popup-toggle:checked + .popup-overlay .popup-content {
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* 카드들을 중앙에 배치 */
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <!-- 치이카와 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/6_UrSq95gLX5J5d2oe7n5DOekOLPPnW38G5IV6dVZMHEziAnRbXlU4XWOWQ97k0x6fChOmjPFTuIimHWV8VjbDie2Wi-mvDq7DvSM_EVdGiWe8vvABjQ7W6mfarFPHmccu9XOD8C8N5PWgNCjqyRrA.webp"
+          class="card-img-top"
+          alt="치이카와 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">치이카와</h5>
+          <p class="card-text">종족: 햄스터</p>
+          <label for="popup-toggle-chi" class="btn btn-primary"
+            >정보 보기</label
+          >
+          <!-- 팝업을 제어하는 체크박스 -->
+          <input type="checkbox" id="popup-toggle-chi" class="popup-toggle" />
+
+          <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+          <div class="popup-overlay">
+            <div class="popup-content">
+              <!-- 팝업 닫기 버튼 -->
+              <label for="popup-toggle-chi" class="popup-close">×</label>
+              <h2>치이카와</h2>
+              <ul>
+                <li>
+                  치이카와는 주요 캐릭터 3인방 중 하나로, 주인공 격
+                  캐릭터입니다. 햄스터 캐릭터로 첫 등장 때는 명확한 배경 없이
+                  '작고 귀여운 녀석'이 되고 싶다는 소망을 담은 낙서로
+                  등장했습니다. 이름의 유래는 그 소망을 줄여서 만든 이름입니다.
+                </li>
+                <li>
+                  단짝 친구 하치와레와는 달리, 치이카와는 정확한 언어보다는
+                  '우...', '와앗', '후!' 같은 감탄사와 표정, 몸짓으로 의사소통을
+                  합니다. 하지만 말을 전혀 못하는 것은 아니며, '싫어!'나 '써...'
+                  같은 간단한 말은 합니다.
+                </li>
+                <li>
+                  가끔 혼자서
+                  <a href="https://www.youtube.com/watch?v=Bihe9F49OpI&t=38s"
+                    >얌빰빰 루빠루빠</a
+                  >와 같은 노래를 부르거나 탭댄스 같은 춤을 출 때가 있습니다.
+                  신이 나면 친구들과 함께 춤을 추기도 합니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card1 끝 -->
+      <!-- 하치와레 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/VLkBV9OQUVTEgCWWQLGdMyuwIKClbRsujtTbR4GnCWYJ8Ui5u_0MYmzSHtnArTEOBvQByOWkCF0IZ2SxuspNAysjIpmugEXEiTMNntlUt09jzrlOYf9Ab8iAbbBNmRsZMNrOzaEg6-hv4jyt5Btd9Q.webp"
+          class="card-img-top"
+          alt="하치와레 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">하치와레</h5>
+          <p class="card-text">종족: 고양이</p>
+          <label for="popup-toggle-hac" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-hac" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-hac" class="popup-close">×</label>
+            <h2>하치와레</h2>
+            <ul>
+              <li>
+                하치와레는 치이카와의 단짝 친구로, 주인공 격 캐릭터입니다.
+                이름은 일본에서 턱시도 고양이를 '八割れ(하치와레)'라고 부르는
+                것에서 유래했으며, 한국어판에서는 가르마라는 이름으로
+                번역되었습니다.
+              </li>
+              <li>
+                다른 두 캐릭터가 의성어로 의사소통하는 것과 달리, 하치와레는
+                정확한 문장을 구사하며 대사가 가장 많습니다. 하지만 문법이 틀린
+                경우도 많고, <a href="https://www.youtube.com/watch?v=HGDIu-q6XHI&t=9s">'까루메라'와 같은 말실수</a>가 있습니다.
+              </li>
+              <li>
+                작품 외적으로는 독자들에게 치이카와나 우사기의 말을 번역해
+                전달하는 역할을 맡고 있습니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card2 끝 -->
+      <!-- 우사기 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/qQkWd2On5dkJNrZC3pHComKVtUh3tqktBYub54wm_JsSjd0Mw9D9p3TPNKje4iJvXVOYoF3m477E_-fFXJHrIkV7EWX0VhnGWZTtlwrSC0K2_bvr48DcSQx6-zXXONvlXL-axRIZm0CfyMB25KOWXQ.webp"
+          class="card-img-top"
+          alt="우사기 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">우사기</h5>
+          <p class="card-text">종족: 토끼</p>
+          <label for="popup-toggle-usagi" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-usagi" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-usagi" class="popup-close">×</label>
+            <h2>우사기</h2>
+            <ul>
+              <li>
+                치이카와의 주요 캐릭터 3인방 중 하나로 서브 주인공 격 캐릭터다. 노란 토끼 캐릭터로, 치이카와 계정 생성 전 농담곰 단행본 발매 홍보 만화에서부터 꽤 일찍 등장했다. 치이카와 첫 에피소드에서 피자 호빵을 먹으며 본격적으로 첫 등장.
+              </li>
+              <li>
+                연재 초반에는 치이카와와 둘이서 먹방을 찍었고 거대한 음식을 나눠먹는게 주 내용이었다. 해삼으로 치이카와를 괴롭히다 농담곰에게 저지당하거나 '잠깐 사용한 마스크 임시 보관'이라는 명목으로 삥뜯기를 시도하기도 하는 등 농담곰과 함께 등장했으나 이후 별개의 세계관으로 분리되었다.
+              </li>
+              <li>
+                <a href="https://www.youtube.com/watch?v=jLB5xZr_G40">저세상 텐션으로 </a>항상 소리를 지르고 다니기 때문인지 애니메이션에선 다른 메인 캐릭터인 치이카와, 하치와레와 다르게 전문 성우가 붙었다. "끼이이야~하!" 하면서 소리를 지르며 뛰어다니는 것과 하아? 하며 어이없는 표정을 짓는 게 트레이드 마크. 우라라라나 야하, 후웅 같은 특유의 의성어로만 소통한다. 치이카와는 아주 가끔 "써..."나 "싫어!"하고 말을 하곤 하지만 우사기는 전혀 하지 않는다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card3 끝 -->
+       <!-- 쿠리만쥬 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/aF6o7ItYpr0zEt6isIWxPACr6hUdwbT6BnI79H6EWxF8j2IISUx0SxYohLfqqMyB6wQz86_H-Op6eUWi3_XnCTYwrhW-gGvY4gkI-Y-B2lRGxdtOlHCO6mrXnSMKlZLGpI7nyUKpm_Rii2vRh3_Hxg.webp"
+          class="card-img-top"
+          alt="쿠리만쥬 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">쿠리만쥬</h5>
+          <p class="card-text">종족: 밤만쥬</p>
+          <label for="popup-toggle-KURIMANJU" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-KURIMANJU" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-KURIMANJU" class="popup-close">×</label>
+            <h2>쿠리만쥬</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 밤만쥬에서 모티브를 얻은 듯한 수달 캐릭터로 초기 낙서 작업물에서부터 꽤 일찍 등장했다. 밤만쥬를 안주로 술을 마시는 것이 본격적인 첫 등장.
+              </li>
+              <li>
+                이름의 유래는 일본어로 밤+만쥬를 뜻하는 くり(쿠리)+まんじゅう(만쥬).
+              </li>
+              <li>
+                주당으로 술 자격증을 가지고 있다. 등장할 때마다 안주와 술이나 커피 등을 마신다. 마시고 나면 꼭 <a href="https://www.youtube.com/watch?v=5dTRQblIt-Q&t=8s">캬~ 하면서 하악질</a>을 한다. 치이카와 못지 않게 귀여운 평소 표정과는 대비되게 음식을 먹을 때 인상이 마구 구겨지며 이빨을 드러내며 하악질을 하는 것이 트레이드 마크.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card4 끝 -->
+       <!-- 모몽가 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/iEa2pRF4Pbmv24fDDRZ9UhmnNJ0Oth-PeA-sP1T1k_IQCJzKZ_wrvMdEtBsjeceEcmL-WifAGMupv2lbcXq8-L7Mf79-9IRAmdJwQZi-l8tUl-zqzWyww8-rp8xiA0YuQL_k42yR9bp-0VyGRbZRmw.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">모몽가</h5>
+          <p class="card-text">종족: 하늘다람쥐</p>
+          <label for="popup-toggle-MOMONGA" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-MOMONGA" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-MOMONGA" class="popup-close">×</label>
+            <h2>모몽가</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 하늘다람쥐 캐릭터로, 별안간 골목에서 튀어나와 화장실에 간 하치와레를 기다리는 치이카와를 밀치고서 '드디어 해냈다'라는 의미심장한 말을 외치며 첫 등장한다.
+              </li>
+              <li>
+                이름의 유래는 하늘다람쥐를 뜻하는 일본어 모몬가.
+              </li>
+              <li>
+                언제나 귀여운 척을 하며 칭찬받거나 예쁨받고 싶어한다. <a href="https://www.youtube.com/watch?v=qrSYMFdA4-w&t=32s">치이카와 등 다른 먼작귀들이 귀여워보이는 행동을 하면 꼭 따라하려고 한다.</a> 길에 떨어져 있는 쓰레기를 줍고는 노동 갑옷 씨에게 칭찬해달라고 자꾸 말 걸거나 자신을 혼내보라고 명령한 뒤 혼내면 갑자기 아기처럼 우는 등 억지를 자주 부린다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card5 끝 -->
+       <!-- 랏코 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/hwgAb4MElY0SyDerwon4DDhjEFtZM4P2wXRI4gtB-V9cw2nFMufiAjlAFezP99DTuf22YVpRe3pE5EEe2rOrI6F4czQLfl13Sqpie_rtPMnGjH7pomHY1m5bjxy69s0l27bkA0L5aiWPZJyuythM0A.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">랏코</h5>
+          <p class="card-text">종족: 해달</p>
+          <label for="popup-toggle-RAKKO" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-RAKKO" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-RAKKO" class="popup-close">×</label>
+            <h2>랏코</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 해달 캐릭터로, 단행본에서 몬스터 때문에 곤경을 겪고 있는 치이카와에게 나타나 구해주며 첫 등장한다. 토벌 랭커 1위이다.
+              </li>
+              <li>
+                이름의 유래는 일본어로 해달을 뜻하는 らっこ(랏코).
+              </li>
+              <li>
+                <a href="https://www.youtube.com/watch?v=7DuwGgD0Thw&t=11s">토벌 랭킹 1위</a>로, 작중 먼작귀들 중에는 압도적으로 강한 모습을 보여준다. 랭커라고도 불리며 먼작귀들에게 존경을 받고 있다. 세계관 내에서의 명성이 대단한지 랏코가 나타나면 먼작귀들이 우르르 모여서 따라간다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card6 끝 -->
+       <!-- 시사 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/kBcxUW6jO8fALfUnbl-tiT4pkTw8lptYp1QUSzXB-bIMrMiV9E0msA7pBR0dDUv6227FCiS0sQXqrM8agf0LzpY_lQZnvTwLUAcvITfQ1_fTPePpelueGWqUzO7fTdy7dteDM7wb2CJs0UmRufwteQ.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">시사</h5>
+          <p class="card-text">종족: 시사</p>
+          <label for="popup-toggle-SHISA" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-SHISA" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-SHISA" class="popup-close">×</label>
+            <h2>시사</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 오키나와의 수호동물 시사 캐릭터로, 라멘 갑옷 씨를 사부님이라 부르면서 일하게 해달라고 나타난 것이 첫 등장이다.
+              </li>
+              <li>
+                이름의 유래 및 종족은 오키나와의 수호동물 시사(シーサー)이다. 그렇다보니 시사가 무언가를 언급해거나 내오는 것은 전부 오키나와와 관련되어 있다.
+              </li>
+              <li>
+                라멘 갑옷 씨가 운영하는 음식점 '라멘 로우'의 알바생이다. 처음에는 거절당했지만 꾸준한 요구에 갑옷 씨가 슈퍼 아르바이트 자격증을 따오면 일하게 해주겠다고 하자 자격증을 따오고 정식으로 채용된다. 갑옷 씨 왈, 최종 시험까지 도달하는 게 무척 어려운 자격증이라고 한다. 이후 슈퍼 아르바이터 자격증이 폐지된다는 소식에 몸살이 날 정도로 로우와 라멘 갑옷 씨에게 애정이 있는 듯하다. 이 소식을 듣고서도 일과 공부를 포기하지 않는다. <a href="https://www.youtube.com/watch?v=W8Hck_W8ZGg">에피소드</a>(아쉽게도 아직 더빙판은 없다..)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card7 끝 -->
+       <!-- 카니 -->
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://i.namu.wiki/i/5SnyLidYXWYeLg2DxgURdYYJMUeT5mwZXiVoloFFZvN3s9TqDUbXayZ2hUYEaZCH-i4YgepxDsO5aPAKCTZpwv68fuqIbqJYqDRnLWqsU-hsLy3aYYTyLGnXlsG-CimEAiOOHliFIq97wGHla-5wXg.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">카니</h5>
+          <p class="card-text">게(?)</p>
+          <label for="popup-toggle-KANI" class="btn btn-primary">정보 보기</label>
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-KANI" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-KANI" class="popup-close">×</label>
+            <h2>카니</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 원래 얼굴이 나오지 않고 가끔 등장하던 헌책방을 운영하는 노점상 모브 캐릭터였으나, 모몽가와 친해진 이후로 이름과 얼굴이 공개되었다. 헌책방(古本屋)이라 불리기도 한다. '헌책' 에피소드에서 하치와레에게 제초 검정 책을 판매한 것이 모브 헌책방으로서의 첫 등장.
+              </li>
+              <li>
+                이름의 유래는 일본어로 게를 뜻하는 かに(카니).
+              </li>
+              <li>
+                장사할 때는 古本(헌책)이라고 쓰인 표지판을 걸고 등장한다. 헌책방에서 파는 책 종류는 제초 검정 교재, 만화책, 요리 레시피집 등 다양하다. 치이카와와 <a href="https://www.youtube.com/watch?v=svuXycRFwD0&t=34s">하치와레가 사가기도 했다</a>(이 에피소드인듯 하다). 파는 일 뿐만 아니라 대량으로 사들이기도 한다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card8 끝 -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
