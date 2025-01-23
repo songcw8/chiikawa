@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta property="og:title" content="먼작귀" />
+    <meta property="og:description" content="에 대해서 조금만 알아보자" />
+    <meta property="og:image" content="https://ifh.cc/g/a35hYQ.webp" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://i.namu.wiki/i/fdjSTH1Tl97OBiyb8_hgLqxgo79j9bicdUZF_-lsoOqkh6kP6-F0xtTJSWr4uW8R2ZacZiBwE2qk5hnsiSntA2xmfmegInf5Tis_lgbf-wbplmZis00Nx0Hcm1JFTKpfa2wWnBmEposvSwYadp212w.webp"
+    />
+
+    <title>먼작귀 소개</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* 팝업 화면(배경) 스타일 */
+      .popup-overlay {
+        display: none; /* 기본적으로 숨겨짐 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* 팝업을 가장 위에 표시하도록 설정 */
+      }
+
+      /* 팝업 콘텐츠 스타일 */
+      .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 80%;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .popup h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .popup p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* 팝업 닫기 버튼 스타일 */
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.5em;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .popup-close:hover {
+        color: #ff0000;
+      }
+
+      /* 체크박스를 이용한 팝업 열기 */
+      .popup-toggle {
+        display: none;
+      }
+
+      /* 체크박스가 체크된 상태에서 팝업을 보이도록 설정 */
+      .popup-toggle:checked + .popup-overlay {
+        display: flex;
+      }
+
+      /* 팝업 애니메이션: 팝업이 부드럽게 나타나도록 설정 */
+      .popup-toggle:checked + .popup-overlay .popup-content {
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* 카드들을 중앙에 배치 */
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .card img {
+        width: 250px; /* 고정 너비 */
+        height: 250px; /* 고정 높이 */
+        object-fit: fill; /* 이미지 비율에 맞게 잘라냄 */
+      }
+      .card {
+        width: 16rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div>
+        <img
+          src="https://i.namu.wiki/i/87pvpxfwzM6BAINqIzxGeCHernmwkuZoeDm7z88RcsmrlOaEdmHmz0DHbyBeC8QJ0TkIvJv5gF8cxn5sakK3gw.webp"
+          alt="치이카와"
+          style="width: 100%; height: auto"
+        />
+      </div>
+      <!-- <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="data:image/jpeg;base64,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"
+              class="d-block w-100"
+              alt="..."
+              style="object-fit: cover; width: 100%; height: 200px"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFC8qBZMD2ejmn05JZguts_e2D5Gea_TosPw&s"
+              class="d-block w-100"
+              alt="..."
+              style="object-fit: cover; width: 100%; height: 200px"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="data:image/jpeg;base64,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"
+              class="d-block w-100"
+              alt="..."
+              style="object-fit: cover; width: 100%; height: 200px"
+            />
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="flex-container">
+      <!-- 치이카와 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/6_UrSq95gLX5J5d2oe7n5DOekOLPPnW38G5IV6dVZMHEziAnRbXlU4XWOWQ97k0x6fChOmjPFTuIimHWV8VjbDie2Wi-mvDq7DvSM_EVdGiWe8vvABjQ7W6mfarFPHmccu9XOD8C8N5PWgNCjqyRrA.webp"
+          class="card-img-top"
+          alt="치이카와 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">치이카와</h5>
+          <p class="card-text">종족: 햄스터</p>
+          <label for="popup-toggle-chi" class="btn btn-primary"
+            >정보 보기</label
+          >
+          <!-- 팝업을 제어하는 체크박스 -->
+          <input type="checkbox" id="popup-toggle-chi" class="popup-toggle" />
+
+          <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+          <div class="popup-overlay">
+            <div class="popup-content">
+              <!-- 팝업 닫기 버튼 -->
+              <label for="popup-toggle-chi" class="popup-close">×</label>
+              <h2>치이카와</h2>
+              <ul>
+                <li>
+                  치이카와는 주요 캐릭터 3인방 중 하나로, 주인공 격
+                  캐릭터입니다. 햄스터 캐릭터로 첫 등장 때는 명확한 배경 없이
+                  '작고 귀여운 녀석'이 되고 싶다는 소망을 담은 낙서로
+                  등장했습니다. 이름의 유래는 그 소망을 줄여서 만든 이름입니다.
+                </li>
+                <li>
+                  단짝 친구 하치와레와는 달리, 치이카와는 정확한 언어보다는
+                  '우...', '와앗', '후!' 같은 감탄사와 표정, 몸짓으로 의사소통을
+                  합니다. 하지만 말을 전혀 못하는 것은 아니며, '싫어!'나 '써...'
+                  같은 간단한 말은 합니다.
+                </li>
+                <li>
+                  가끔 혼자서
+                  <a
+                    href="https://www.youtube.com/watch?v=Bihe9F49OpI&t=38s"
+                    target="_blank"
+                    >얌빰빰 루빠루빠</a
+                  >와 같은 노래를 부르거나 탭댄스 같은 춤을 출 때가 있습니다.
+                  신이 나면 친구들과 함께 춤을 추기도 합니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card1 끝 -->
+      <!-- 하치와레 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/VLkBV9OQUVTEgCWWQLGdMyuwIKClbRsujtTbR4GnCWYJ8Ui5u_0MYmzSHtnArTEOBvQByOWkCF0IZ2SxuspNAysjIpmugEXEiTMNntlUt09jzrlOYf9Ab8iAbbBNmRsZMNrOzaEg6-hv4jyt5Btd9Q.webp"
+          class="card-img-top"
+          alt="하치와레 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">하치와레</h5>
+          <p class="card-text">종족: 고양이</p>
+          <label for="popup-toggle-hac" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-hac" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-hac" class="popup-close">×</label>
+            <h2>하치와레</h2>
+            <ul>
+              <li>
+                하치와레는 치이카와의 단짝 친구로, 주인공 격 캐릭터입니다.
+                이름은 일본에서 턱시도 고양이를 '八割れ(하치와레)'라고 부르는
+                것에서 유래했으며, 한국어판에서는 가르마라는 이름으로
+                번역되었습니다.
+              </li>
+              <li>
+                다른 두 캐릭터가 의성어로 의사소통하는 것과 달리, 하치와레는
+                정확한 문장을 구사하며 대사가 가장 많습니다. 하지만 문법이 틀린
+                경우도 많고,
+                <a
+                  href="https://www.youtube.com/watch?v=HGDIu-q6XHI&t=9s"
+                  target="_blank"
+                  >'까루메라'와 같은 말실수</a
+                >가 있습니다.
+              </li>
+              <li>
+                작품 외적으로는 독자들에게 치이카와나 우사기의 말을 번역해
+                전달하는 역할을 맡고 있습니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card2 끝 -->
+      <!-- 우사기 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/qQkWd2On5dkJNrZC3pHComKVtUh3tqktBYub54wm_JsSjd0Mw9D9p3TPNKje4iJvXVOYoF3m477E_-fFXJHrIkV7EWX0VhnGWZTtlwrSC0K2_bvr48DcSQx6-zXXONvlXL-axRIZm0CfyMB25KOWXQ.webp"
+          class="card-img-top"
+          alt="우사기 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">우사기</h5>
+          <p class="card-text">종족: 토끼</p>
+          <label for="popup-toggle-usagi" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-usagi" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-usagi" class="popup-close">×</label>
+            <h2>우사기</h2>
+            <ul>
+              <li>
+                치이카와의 주요 캐릭터 3인방 중 하나로 서브 주인공 격 캐릭터다.
+                노란 토끼 캐릭터로, 치이카와 계정 생성 전 농담곰 단행본 발매
+                홍보 만화에서부터 꽤 일찍 등장했다. 치이카와 첫 에피소드에서
+                피자 호빵을 먹으며 본격적으로 첫 등장.
+              </li>
+              <li>
+                연재 초반에는 치이카와와 둘이서 먹방을 찍었고 거대한 음식을
+                나눠먹는게 주 내용이었다. 해삼으로 치이카와를 괴롭히다
+                농담곰에게 저지당하거나 '잠깐 사용한 마스크 임시 보관'이라는
+                명목으로 삥뜯기를 시도하기도 하는 등 농담곰과 함께 등장했으나
+                이후 별개의 세계관으로 분리되었다.
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=jLB5xZr_G40"
+                  target="_blank"
+                  >저세상 텐션으로 </a
+                >항상 소리를 지르고 다니기 때문인지 애니메이션에선 다른 메인
+                캐릭터인 치이카와, 하치와레와 다르게 전문 성우가 붙었다.
+                "끼이이야~하!" 하면서 소리를 지르며 뛰어다니는 것과 하아? 하며
+                어이없는 표정을 짓는 게 트레이드 마크. 우라라라나 야하, 후웅
+                같은 특유의 의성어로만 소통한다. 치이카와는 아주 가끔 "써..."나
+                "싫어!"하고 말을 하곤 하지만 우사기는 전혀 하지 않는다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card3 끝 -->
+      <!-- 쿠리만쥬 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/aF6o7ItYpr0zEt6isIWxPACr6hUdwbT6BnI79H6EWxF8j2IISUx0SxYohLfqqMyB6wQz86_H-Op6eUWi3_XnCTYwrhW-gGvY4gkI-Y-B2lRGxdtOlHCO6mrXnSMKlZLGpI7nyUKpm_Rii2vRh3_Hxg.webp"
+          class="card-img-top"
+          alt="쿠리만쥬 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">쿠리만쥬</h5>
+          <p class="card-text">종족: 밤만쥬</p>
+          <label for="popup-toggle-KURIMANJU" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input
+          type="checkbox"
+          id="popup-toggle-KURIMANJU"
+          class="popup-toggle"
+        />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-KURIMANJU" class="popup-close">×</label>
+            <h2>쿠리만쥬</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 밤만쥬에서 모티브를 얻은 듯한 수달 캐릭터로
+                초기 낙서 작업물에서부터 꽤 일찍 등장했다. 밤만쥬를 안주로 술을
+                마시는 것이 본격적인 첫 등장.
+              </li>
+              <li>
+                이름의 유래는 일본어로 밤+만쥬를 뜻하는
+                くり(쿠리)+まんじゅう(만쥬).
+              </li>
+              <li>
+                주당으로 술 자격증을 가지고 있다. 등장할 때마다 안주와 술이나
+                커피 등을 마신다. 마시고 나면 꼭
+                <a
+                  href="https://www.youtube.com/watch?v=5dTRQblIt-Q&t=8s"
+                  target="_blank"
+                  >캬~ 하면서 하악질</a
+                >을 한다. 치이카와 못지 않게 귀여운 평소 표정과는 대비되게
+                음식을 먹을 때 인상이 마구 구겨지며 이빨을 드러내며 하악질을
+                하는 것이 트레이드 마크.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card4 끝 -->
+      <!-- 모몽가 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/iEa2pRF4Pbmv24fDDRZ9UhmnNJ0Oth-PeA-sP1T1k_IQCJzKZ_wrvMdEtBsjeceEcmL-WifAGMupv2lbcXq8-L7Mf79-9IRAmdJwQZi-l8tUl-zqzWyww8-rp8xiA0YuQL_k42yR9bp-0VyGRbZRmw.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">모몽가</h5>
+          <p class="card-text">종족: 하늘다람쥐</p>
+          <label for="popup-toggle-MOMONGA" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-MOMONGA" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-MOMONGA" class="popup-close">×</label>
+            <h2>모몽가</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 하늘다람쥐 캐릭터로, 별안간 골목에서
+                튀어나와 화장실에 간 하치와레를 기다리는 치이카와를 밀치고서
+                '드디어 해냈다'라는 의미심장한 말을 외치며 첫 등장한다.
+              </li>
+              <li>이름의 유래는 하늘다람쥐를 뜻하는 일본어 모몬가.</li>
+              <li>
+                언제나 귀여운 척을 하며 칭찬받거나 예쁨받고 싶어한다.
+                <a
+                  href="https://www.youtube.com/watch?v=qrSYMFdA4-w&t=32s"
+                  target="_blank"
+                  >치이카와 등 다른 먼작귀들이 귀여워보이는 행동을 하면 꼭
+                  따라하려고 한다.</a
+                >
+                길에 떨어져 있는 쓰레기를 줍고는 노동 갑옷 씨에게 칭찬해달라고
+                자꾸 말 걸거나 자신을 혼내보라고 명령한 뒤 혼내면 갑자기
+                아기처럼 우는 등 억지를 자주 부린다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card5 끝 -->
+      <!-- 랏코 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/hwgAb4MElY0SyDerwon4DDhjEFtZM4P2wXRI4gtB-V9cw2nFMufiAjlAFezP99DTuf22YVpRe3pE5EEe2rOrI6F4czQLfl13Sqpie_rtPMnGjH7pomHY1m5bjxy69s0l27bkA0L5aiWPZJyuythM0A.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">랏코</h5>
+          <p class="card-text">종족: 해달</p>
+          <label for="popup-toggle-RAKKO" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-RAKKO" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-RAKKO" class="popup-close">×</label>
+            <h2>랏코</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 해달 캐릭터로, 단행본에서 몬스터 때문에
+                곤경을 겪고 있는 치이카와에게 나타나 구해주며 첫 등장한다. 토벌
+                랭커 1위이다.
+              </li>
+              <li>이름의 유래는 일본어로 해달을 뜻하는 らっこ(랏코).</li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=7DuwGgD0Thw&t=11s"
+                  target="_blank"
+                  >토벌 랭킹 1위</a
+                >로, 작중 먼작귀들 중에는 압도적으로 강한 모습을 보여준다.
+                랭커라고도 불리며 먼작귀들에게 존경을 받고 있다. 세계관 내에서의
+                명성이 대단한지 랏코가 나타나면 먼작귀들이 우르르 모여서
+                따라간다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card6 끝 -->
+      <!-- 시사 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/kBcxUW6jO8fALfUnbl-tiT4pkTw8lptYp1QUSzXB-bIMrMiV9E0msA7pBR0dDUv6227FCiS0sQXqrM8agf0LzpY_lQZnvTwLUAcvITfQ1_fTPePpelueGWqUzO7fTdy7dteDM7wb2CJs0UmRufwteQ.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">시사</h5>
+          <p class="card-text">종족: 시사</p>
+          <label for="popup-toggle-SHISA" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-SHISA" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-SHISA" class="popup-close">×</label>
+            <h2>시사</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 오키나와의 수호동물 시사 캐릭터로, 라멘
+                갑옷 씨를 사부님이라 부르면서 일하게 해달라고 나타난 것이 첫
+                등장이다.
+              </li>
+              <li>
+                이름의 유래 및 종족은 오키나와의 수호동물 시사(シーサー)이다.
+                그렇다보니 시사가 무언가를 언급해거나 내오는 것은 전부
+                오키나와와 관련되어 있다.
+              </li>
+              <li>
+                라멘 갑옷 씨가 운영하는 음식점 '라멘 로우'의 알바생이다.
+                처음에는 거절당했지만 꾸준한 요구에 갑옷 씨가 슈퍼 아르바이트
+                자격증을 따오면 일하게 해주겠다고 하자 자격증을 따오고 정식으로
+                채용된다. 갑옷 씨 왈, 최종 시험까지 도달하는 게 무척 어려운
+                자격증이라고 한다. 이후 슈퍼 아르바이터 자격증이 폐지된다는
+                소식에 몸살이 날 정도로 로우와 라멘 갑옷 씨에게 애정이 있는
+                듯하다. 이 소식을 듣고서도 일과 공부를 포기하지 않는다.
+                <a
+                  href="https://www.youtube.com/watch?v=2QMuuqfdZJY"
+                  target="_blank"
+                  >에피소드</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card7 끝 -->
+      <!-- 카니 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/5SnyLidYXWYeLg2DxgURdYYJMUeT5mwZXiVoloFFZvN3s9TqDUbXayZ2hUYEaZCH-i4YgepxDsO5aPAKCTZpwv68fuqIbqJYqDRnLWqsU-hsLy3aYYTyLGnXlsG-CimEAiOOHliFIq97wGHla-5wXg.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">카니</h5>
+          <p class="card-text">종족: 게(?)</p>
+          <label for="popup-toggle-KANI" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-KANI" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-KANI" class="popup-close">×</label>
+            <h2>카니</h2>
+            <ul>
+              <li>
+                치이카와의 등장인물. 원래 얼굴이 나오지 않고 가끔 등장하던
+                헌책방을 운영하는 노점상 모브 캐릭터였으나, 모몽가와 친해진
+                이후로 이름과 얼굴이 공개되었다. 헌책방(古本屋)이라 불리기도
+                한다. '헌책' 에피소드에서 하치와레에게 제초 검정 책을 판매한
+                것이 모브 헌책방으로서의 첫 등장.
+              </li>
+              <li>이름의 유래는 일본어로 게를 뜻하는 かに(카니).</li>
+              <li>
+                장사할 때는 古本(헌책)이라고 쓰인 표지판을 걸고 등장한다.
+                헌책방에서 파는 책 종류는 제초 검정 교재, 만화책, 요리 레시피집
+                등 다양하다. 치이카와와
+                <a
+                  href="https://www.youtube.com/watch?v=svuXycRFwD0&t=34s"
+                  target="_blank"
+                  >하치와레가 사가기도 했다</a
+                >(이 에피소드인듯 하다). 파는 일 뿐만 아니라 대량으로 사들이기도
+                한다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card8 끝 -->
+      <!-- 파자마파티즈 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/wN9EuFeGKp0btQ97VniWz-V2YhQMQvMSZW4d19Rlb2Nbu8stW3RcZfsjFji1Z3cQR3FHudJ2TsaJtotqZcUFCxXvoZDAXKHM-12gGZNTx86vgiCAUwNK6hPuq4WwgWSoaPgIgsPQgujE9xqu_ctKsw.webp"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">파자마파티즈</h5>
+          <p class="card-text">종족: 먼작귀</p>
+          <label for="popup-toggle-pajama" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-pajama" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-pajama" class="popup-close">×</label>
+            <h2>파자마파티즈</h2>
+            <ul>
+              <li>
+                소처럼 생긴 멤버(이하 '초록 파자마 멤버')가 포쉐트 갑옷 씨에게
+                파자마를 사기 위해 장사가 시작하기도 전에 갑옷 씨를 기다리려고
+                앉아 있는다. 결국 초록색 파자마를 얻고 신나서 파자마를 입은 채로
+                깡총깡총 걸어간다.
+              </li>
+              <li>
+                '파자마 모임'이라는 작은 간판을 세우고 파자마를 입은 세 명의
+                멤버와 같이 노래하고 춤추는 모습이 포셰트 갑옷 씨에게 발견된다.
+                그러다 간식 타임을 갖는데 간식을 파자마에 흘려서 슬퍼하자 포쉐트
+                갑옷 씨가 빨면 사라진다며 도와주러 온다.
+              </li>
+              <li>
+                초록 파자마 멤버는 노래와 춤을 혼자 만들며 연습하다가 친구들과
+                함께 공연할 생각에 들뜬다. 그러나 공연날, 관객이 아무도 없어
+                멤버들은 실망하는데 초록 파자마 멤버가
+                <a
+                  href="https://www.youtube.com/watch?v=eYOLqQp2wpU"
+                  target="_blank"
+                  >춤과 노래</a
+                >를 시작하자 다른 멤버들도 힘을 얻어 같이 춤추고 노래한다.
+                우연히 그걸 본 노동 갑옷 씨는 뭐지 하며 노래를 따라 흥얼거리며
+                지나간다. 그리고 다른 갑옷 씨들과 치이카와, 하치와레에게 그
+                노래를 춤과 노래를 소개해주고 다닌다. 이야기가 궁금하다면
+                <a
+                  href="https://namu.wiki/w/%EC%B9%98%EC%9D%B4%EC%B9%B4%EC%99%80/%EB%93%B1%EC%9E%A5%EC%9D%B8%EB%AC%BC#s-3.2"
+                  target="_blank"
+                  >클릭</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card9 끝 -->
+      <!-- 갑옷씨 -->
+      <div class="card">
+        <img
+          src="https://i.namu.wiki/i/8bOHNUByAmaCbGdhboYVUGvDBZWj-qMBvC3gQme4DDC1F1M_Tt9No2QkIfPfgLvV7jUiSce0h-hpJpnqW7pD4Hcu4h0fWpNFUj3RdxXKkkgh_Qj2jpdSF9OXgBTNLUJ4OwmanSSUTyTB5u33CN4Wlw.webp"
+          class="card-img-top"
+          alt="갑옷씨 이미지"
+        />
+        <div class="card-body">
+          <h5 class="card-title">갑옷 씨</h5>
+          <p class="card-text">종족: 갑옷 씨</p>
+          <label for="popup-toggle-armor" class="btn btn-primary"
+            >정보 보기</label
+          >
+        </div>
+
+        <!-- 팝업을 제어하는 체크박스 -->
+        <input type="checkbox" id="popup-toggle-armor" class="popup-toggle" />
+
+        <!-- 팝업 배경 (숨겨져 있다가 체크박스 체크 시 나타남) -->
+        <div class="popup-overlay">
+          <div class="popup-content">
+            <!-- 팝업 닫기 버튼 -->
+            <label for="popup-toggle-armor" class="popup-close">×</label>
+            <h2>갑옷 씨</h2>
+            <ul>
+              <li>
+                마을에서 먼작귀들을 관리하는 사람이 갑옷을 입은것처럼 보이는
+                존재다.
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=RVG38PfaBP0&t=38s"
+                  target="_blank"
+                  >포쉐트 갑옷 씨</a
+                >처럼 먼작귀들과 친하게 지내는 갑옷 씨도 있지만 작중 묘사를 보면
+                이유는 불명이나 권장되는 행위는 아닌 듯하다.
+              </li>
+              <li>
+                치이카와 세계관에 등장하는 음식점, 카페 등은 모두 갑옷 씨들만이
+                운영하거나 일할 수 있고 먼작귀들은 슈퍼 아르바이터 자격증이
+                없으면 직원으로도 일할 수 없다. 다만 카니처럼 노점 형식으로
+                헌책방을 운영하는 것은 가능한 모양이다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- card9 끝 -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
